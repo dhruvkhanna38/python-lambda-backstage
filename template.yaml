@@ -1,0 +1,37 @@
+apiVersion: backstage.io/v1alpha1
+kind: Template
+metadata:
+  name: python-lambda-template
+  title: Create Python Lambda Template
+  description: Create a new python lambda function
+  tags:
+    - experimental
+    - python-3
+spec:
+  owner: Stockholm@team.telstra.com
+  templater: cookiecutter
+  type: aws lambda microservice
+  path: '.'
+  schema:
+    required: 
+      - component_id
+      - runtime
+    properties:
+      component_id:
+        title: Project Name
+        type: string
+        pattern: ^[a-z0-9]+(-[a-z0-9]+)*$
+        description: Name of you AWS lambda project.
+      runtime:
+        title: Choose Runtime
+        type: string
+        description: Enter the python version for your project
+        enum:
+          - python3.7
+          - python3.6
+          - python2.7
+        default: python3.7
+      project_short_description:
+        title: Description
+        type: string
+        description: Description of the component
